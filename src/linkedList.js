@@ -62,6 +62,7 @@ function createList() {
             tail = element;
             tail.setNext(null);
         }
+        listSize -= 1;
         return result.getValue();
     }
 
