@@ -37,10 +37,10 @@ function createList() {
 
     const elementAt = function (indx) {
         let element = head;
-        for (let i = 0; i <= indx; i++) {
+        for (let i = 1; i <= indx; i++) {
             element = element.getNext();
         }
-        return element;
+        return element.getValue();
     }
 
     const toString = function () {
