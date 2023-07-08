@@ -20,6 +20,7 @@ function createList() {
     const prepend = function (value) {
         let newNode = createNode(value, head);
         head = newNode;
+        listSize += 1;
     }
 
     const getSize = function () {
