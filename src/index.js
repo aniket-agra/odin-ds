@@ -9,3 +9,5 @@ newList.append(3);
 console.log(newList.toString());
 newList.prepend(4);
 console.log(newList.toString());
+console.log(newList.pop());
+console.log(newList.toString());

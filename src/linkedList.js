@@ -43,6 +43,28 @@ function createList() {
         return element.getValue();
     }
 
+    const pop = function () {
+        let result;
+        if (tail === head) {
+            result = tail;
+            tail = null;
+            head = null;
+        } else {
+            let element = head;
+            while (true) {
+                if (element.getNext() === tail) {
+                    break;
+                } else {
+                    element = element.getNext();
+                }
+            }
+            result = tail;
+            tail = element;
+            tail.setNext(null);
+        }
+        return result.getValue();
+    }
+
     const toString = function () {
         let repr = "";
         let element = head; 
@@ -57,7 +79,7 @@ function createList() {
         return repr;
     }
 
-    return {append, prepend, getSize, getHead, getTail, elementAt, toString};
+    return {append, prepend, getSize, getHead, getTail, elementAt, pop, toString};
 }
 
 export {createList};
