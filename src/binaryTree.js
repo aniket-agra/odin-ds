@@ -28,8 +28,18 @@ function createTree(rootNode = null) {
         }
     }
 
-    const toString = function () {
-        let result = "";
-        
+    const getRoot = function () {
+        return root;
     }
+
+    const inOrder = function (treeRoot) {
+        if (treeRoot === null) {
+            return "";
+        }
+        return inOrder(treeRoot.getLeft()) + " " + treeRoot.getValue() + " " + inOrder(treeRoot.getRight());
+    }
+
+    return {append, getRoot, inOrder};
 }
+
+export{createTree};
