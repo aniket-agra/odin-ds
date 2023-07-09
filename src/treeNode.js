@@ -27,5 +27,12 @@ function createTreeNode(val = null, left = null, right = null) {
         return rightNode;
     }
 
+    const toString = function () {
+        let result = value + " " + leftNode.getValue() + " (L) " + rightNode.getValue() + " (R) ";
+        return result;
+    }
+
     return {getValue, setValue, getLeft, setLeft, getRight, setRight};
 }
+
+export {createTreeNode};
