@@ -36,10 +36,24 @@ function createTree(rootNode = null) {
         if (treeRoot === null) {
             return "";
         }
-        return inOrder(treeRoot.getLeft()) + " " + treeRoot.getValue() + " " + inOrder(treeRoot.getRight());
+        return inOrder(treeRoot.getLeft()) + "_" + treeRoot.getValue() + "_" + inOrder(treeRoot.getRight());
     }
 
-    return {append, getRoot, inOrder};
+    const preOrder = function (treeRoot) {
+        if (treeRoot === null) {
+            return "";
+        }
+        return treeRoot.getValue() + "_" + preOrder(treeRoot.getLeft()) + "_" + preOrder(treeRoot.getRight());
+    }
+
+        const postOrder = function (treeRoot) {
+        if (treeRoot === null) {
+            return "";
+        }
+        return postOrder(treeRoot.getLeft()) + "_" + postOrder(treeRoot.getRight()) + "_" + treeRoot.getValue();
+    }   
+
+    return {append, getRoot, inOrder, preOrder, postOrder};
 }
 
 export{createTree};
