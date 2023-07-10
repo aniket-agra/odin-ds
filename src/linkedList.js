@@ -78,6 +78,7 @@ function createList() {
             let newNode = createNode(value);
             newNode.setNext(leftNode.getNext());
             leftNode.setNext(newNode);
+            listSize += 1;
         } else {
             console.log("Sorry, index is greater than list size!");
         }
