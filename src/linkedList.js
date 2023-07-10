@@ -84,6 +84,24 @@ function createList() {
         }
     }
 
+    const remove = function (indx) {
+        if (indx === 0) {
+            head = head.getNext();
+            listSize -= 1;
+        } else if (indx < listSize) {
+            let leftNode = head, counter = 1;
+            while (counter < indx) {
+                leftNode = leftNode.getNext();
+                counter += 1;
+            }
+            let toBeRemoved = leftNode.getNext();
+            leftNode.setNext(toBeRemoved.getNext());
+            listSize -= 1;
+        } else {
+            console.log("Sorry, index out of bounds!");
+        }
+    }
+
     const toString = function () {
         let repr = "";
         let element = head; 
@@ -98,7 +116,7 @@ function createList() {
         return repr;
     }
 
-    return {append, prepend, getSize, getHead, getTail, elementAt, pop, toString, insertAt};
+    return {append, prepend, getSize, getHead, getTail, elementAt, pop, insertAt, remove, toString};
 }
 
 export {createList};
