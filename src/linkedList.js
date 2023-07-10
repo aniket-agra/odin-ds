@@ -66,6 +66,23 @@ function createList() {
         return result.getValue();
     }
 
+    const insertAt = function (indx, value) {
+        if (indx === 0) {
+            prepend(value);
+        } else if (indx < listSize) {
+            let leftNode = head, counter = 1;
+            while (counter < indx) {
+                leftNode = head.getNext();
+                counter += 1;
+            }
+            let newNode = createNode(value);
+            newNode.setNext(leftNode.getNext());
+            leftNode.setNext(newNode);
+        } else {
+            console.log("Sorry, index is greater than list size!");
+        }
+    }
+
     const toString = function () {
         let repr = "";
         let element = head; 
@@ -80,7 +97,7 @@ function createList() {
         return repr;
     }
 
-    return {append, prepend, getSize, getHead, getTail, elementAt, pop, toString};
+    return {append, prepend, getSize, getHead, getTail, elementAt, pop, toString, insertAt};
 }
 
 export {createList};
