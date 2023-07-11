@@ -3,7 +3,7 @@ import { createTreeNode } from "./treeNode";
 function createTree(rootNode = null) {
     let root = rootNode;
 
-    const append = function (value) {
+    const insert = function (value) {
         if (root === null) {
             root = createTreeNode(value);
         } else {
@@ -92,7 +92,7 @@ function createTree(rootNode = null) {
         levelOrderRecursive(newArray);
     }
 
-    return {append, getRoot, inOrder, preOrder, postOrder, levelOrder, levelOrderRecursive};
+    return {insert, getRoot, inOrder, preOrder, postOrder, levelOrder, levelOrderRecursive};
 }
 
 export{createTree};
