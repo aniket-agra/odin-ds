@@ -92,7 +92,53 @@ function createTree(rootNode = null) {
         levelOrderRecursive(newArray);
     }
 
-    return {insert, getRoot, inOrder, preOrder, postOrder, levelOrder, levelOrderRecursive};
+    const remove = function(value) {
+        let prev = null, current = root;
+        while (true) {
+            if (current !== null) {
+                let currentValue = current.getValue();
+                if (value < currentValue) {
+                    prev = current;
+                    current = current.getLeft();
+                } 
+                else if (value > current.getRight()) {
+                        prev = current;
+                        current = current.getRight();
+                    } 
+                else 
+                    break;
+            } 
+            else 
+                break;
+        }
+        if (current === null) 
+            return new Error("cannot remove non-existent element!");
+        let leftChild = current.getLeft(), rightChild = current.getRight();
+        if (leftChild === null) {
+            prev.getLeft() === current ? prev.setLeft(rightChild) : prev.setRight(rightChild);
+            return;
+        }
+        if (rightChild === null) {
+            prev.getLeft() === current ? prev.setLeft(leftChild) : prev.setRight(leftChild);
+            return;
+        }
+        let currNode = leftChild.getRight();
+        while (true) {
+            if (currNode === null)  {
+                leftChild.setRight(rightChild);
+                break;
+            }
+            currNode = currNode.getRight();
+        }
+        if (prev.getLeft() === current) {
+            prev.setLeft(leftChild);
+        } 
+        else {
+            prev.setRight(leftChild);
+        }
+    }
+
+    return {insert, getRoot, inOrder, preOrder, postOrder, levelOrder, levelOrderRecursive, remove};
 }
 
 export{createTree};
