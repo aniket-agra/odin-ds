@@ -123,12 +123,13 @@ function createTree(rootNode = null) {
             prev.getLeft() === current ? prev.setLeft(leftChild) : prev.setRight(leftChild);
             return;
         }
-        let currNode = leftChild.getRight();
+        let prevNode = leftChild, currNode = prevNode.getRight();
         while (true) {
             if (currNode === null)  {
-                leftChild.setRight(rightChild);
+                prevNode.setRight(rightChild);
                 break;
             }
+            prevNode = currNode;
             currNode = currNode.getRight();
         }
         if (prev.getLeft() === current) {
