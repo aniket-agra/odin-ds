@@ -101,10 +101,11 @@ function createTree(rootNode = null) {
                     prev = current;
                     current = current.getLeft();
                 } 
-                else if (value > current.getRight()) {
+                else 
+                if (value > current.getRight()) {
                         prev = current;
                         current = current.getRight();
-                    } 
+                } 
                 else 
                     break;
             } 
