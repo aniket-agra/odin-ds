@@ -53,7 +53,7 @@ function createTree(rootNode = null) {
         return postOrder(treeRoot.getLeft()) + "_" + postOrder(treeRoot.getRight()) + "_" + treeRoot.getValue();
     }   
 
-    const breadthTraverse = function (treeRoot) {
+    const levelOrder = function (treeRoot) {
         if (treeRoot === null) {
             return "";
         } else {
@@ -75,7 +75,7 @@ function createTree(rootNode = null) {
         }
     }
 
-    return {append, getRoot, inOrder, preOrder, postOrder, breadthTraverse};
+    return {append, getRoot, inOrder, preOrder, postOrder, levelOrder};
 }
 
 export{createTree};
