@@ -75,7 +75,24 @@ function createTree(rootNode = null) {
         }
     }
 
-    return {append, getRoot, inOrder, preOrder, postOrder, levelOrder};
+    const levelOrderRecursive = function (nodeArr) {
+        if (nodeArr.length === 0) 
+            return;
+        let printArray = [];
+        let newArray = [];
+        for(let i = 0; i < nodeArr.length; i++) {
+            let element = nodeArr[i];
+            printArray.push(element.getValue());
+            if (element.getLeft() !== null)
+                newArray.push(element.getLeft());
+            if (element.getRight() !== null)
+                newArray.push(element.getRight());
+        };
+        console.log(printArray);
+        levelOrderRecursive(newArray);
+    }
+
+    return {append, getRoot, inOrder, preOrder, postOrder, levelOrder, levelOrderRecursive};
 }
 
 export{createTree};
