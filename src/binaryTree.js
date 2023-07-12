@@ -169,7 +169,27 @@ function createTree(rootNode = null) {
         return heightNode(find(value));
     }
 
-    return {insert, getRoot, inOrder, preOrder, postOrder, levelOrder, levelOrderRecursive, remove, height, find};
+    const depth = function (value) {
+        let count = 0, current = root;
+        while (true) {
+            if (current === null) {
+                return -1;
+            }
+            if (value === current.getValue()) {
+                return count;
+            }
+            if (value < current.getValue()) {
+                count += 1;
+                current = current.getLeft();
+            } else {
+                count += 1;
+                current = current.getRight();
+            }
+        }
+    }
+
+    return {insert, getRoot, inOrder, preOrder, postOrder, levelOrder, 
+        levelOrderRecursive, remove, height, find, depth};
 }
 
 export{createTree};
