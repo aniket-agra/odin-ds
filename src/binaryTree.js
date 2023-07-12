@@ -155,19 +155,19 @@ function createTree(rootNode = null) {
         return current;
     }
 
-    // const heightNode = function (treeNode) {
-    //     if (treeNode === null) {
-    //         return Number.MIN_SAFE_INTEGER;
-    //     }
-    //     if (treeNode.getLeft() === null && treeNode.getRight() === null) {
-    //         return 0;
-    //     } 
-    //     return Math.max(heightNode(treeNode.getLeft()), heightNode(treeNode.getRight())) + 1;
-    // }
+    const heightNode = function (treeNode) {
+        if (treeNode === null) {
+            return Number.MIN_SAFE_INTEGER;
+        }
+        if (treeNode.getLeft() === null && treeNode.getRight() === null) {
+            return 0;
+        } 
+        return Math.max(heightNode(treeNode.getLeft()), heightNode(treeNode.getRight())) + 1;
+    }
 
-    // const height = function (value) {
-    //     return heightNode(find(value));
-    // }
+    const height = function (value) {
+        return heightNode(find(value));
+    }
 
     return {insert, getRoot, inOrder, preOrder, postOrder, levelOrder, levelOrderRecursive, remove, height, find};
 }
