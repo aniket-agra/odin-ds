@@ -34,7 +34,7 @@ newTree.insert("C");
 newTree.insert("I");
 newTree.insert("H");
 console.log(newTree.levelOrder(newTree.getRoot()));
-console.log(newTree.depth("P"));
+console.log(newTree.height("F"));
 // console.log(newTree.levelOrder(newTree.getRoot()));
 // console.log(newTree.inOrder(newTree.getRoot()));
 // console.log(newTree.preOrder(newTree.getRoot()));

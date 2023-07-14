@@ -165,8 +165,22 @@ function createTree(rootNode = null) {
         return Math.max(heightNode(treeNode.getLeft()), heightNode(treeNode.getRight())) + 1;
     }
 
+    const heightNodeDP = function (treeNode, heightObj) {
+        if (treeNode === null) {
+            return -1;
+        }
+        if (heightObj[treeNode.getValue()] !== undefined) {
+            return heightObj[treeNode.getValue()];
+        }
+        heightObj[treeNode.getValue()] = Math.max(heightNodeDP(treeNode.getLeft(), heightObj), heightNodeDP(treeNode.getRight(), heightObj)) + 1;
+        return heightObj[treeNode.getValue()];
+    }
+
     const height = function (value) {
-        return heightNode(find(value));
+        let obj = {};
+        let nodeHeight =  heightNodeDP(find(value), obj);
+        console.log(obj);
+        return nodeHeight;
     }
 
     const depth = function (value) {
