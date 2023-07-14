@@ -211,6 +211,13 @@ function createTree(rootNode = null) {
         }
     }
 
+    const rebalance = function (treeRoot) {
+        let traversed = [];
+        inOrder(treeRoot, traversed);
+        let balancedTree = createTree();
+        
+    }
+
     return {insert, getRoot, inOrder, preOrder, postOrder, levelOrder, 
         levelOrderRecursive, remove, height, find, depth};
 }
