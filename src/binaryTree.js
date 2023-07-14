@@ -32,11 +32,14 @@ function createTree(rootNode = null) {
         return root;
     }
 
-    const inOrder = function (treeRoot) {
-        if (treeRoot === null) {
-            return "";
-        }
-        return inOrder(treeRoot.getLeft()) + "_" + treeRoot.getValue() + "_" + inOrder(treeRoot.getRight());
+    const inOrder = function (treeRoot, traversedNodes) {
+        if (treeRoot.getLeft() !== null)
+            inOrder(treeRoot.getLeft(), traversedNodes);
+        if (treeRoot !== null)
+            traversedNodes.push(treeRoot.getValue());
+        if (treeRoot.getRight() !== null)
+            inOrder(treeRoot.getRight(), traversedNodes);
+        return ;
     }
 
     const preOrder = function (treeRoot) {
