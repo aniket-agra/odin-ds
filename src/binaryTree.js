@@ -42,18 +42,24 @@ function createTree(rootNode = null) {
         return ;
     }
 
-    const preOrder = function (treeRoot) {
-        if (treeRoot === null) {
-            return "";
-        }
-        return treeRoot.getValue() + "_" + preOrder(treeRoot.getLeft()) + "_" + preOrder(treeRoot.getRight());
+    const preOrder = function (treeRoot, traversedNodes) {
+        if (treeRoot !== null) 
+            traversedNodes.push(treeRoot.getValue());
+        if (treeRoot.getLeft() !== null) 
+            preOrder(treeRoot.getLeft(), traversedNodes);
+        if (treeRoot.getRight() !== null)
+            preOrder(treeRoot.getRight(), traversedNodes);
+        return;
     }
 
-    const postOrder = function (treeRoot) {
-        if (treeRoot === null) {
-            return "";
-        }
-        return postOrder(treeRoot.getLeft()) + "_" + postOrder(treeRoot.getRight()) + "_" + treeRoot.getValue();
+    const postOrder = function (treeRoot, traversedNodes) {
+        if (treeRoot.getLeft() !== null) 
+            postOrder(treeRoot.getLeft(), traversedNodes);
+        if (treeRoot.getRight() !== null)
+            postOrder(treeRoot.getRight(), traversedNodes);
+        if (treeRoot !== null) 
+            traversedNodes.push(treeRoot.getValue());
+        return;
     }   
 
     const levelOrder = function (treeRoot) {

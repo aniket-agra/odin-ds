@@ -37,7 +37,7 @@ newTree.insert("H");
 // console.log(newTree.height("F"));
 // console.log(newTree.levelOrder(newTree.getRoot()));
 let arr = [];
-newTree.inOrder(newTree.getRoot(), arr);
+newTree.postOrder(newTree.getRoot(), arr);
 console.log(arr);
 // console.log(newTree.preOrder(newTree.getRoot()));
 // console.log(newTree.postOrder(newTree.getRoot()));
